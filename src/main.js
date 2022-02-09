@@ -5,6 +5,7 @@ import Router from "@koa/router";
 import * as z from "zod";
 import { nanoid } from "nanoid";
 import httpErrors from "http-errors";
+import cors from "@koa/cors";
 
 const TODOS = [
   { id: "qr0u1q1", name: "Learn JS", done: true },
@@ -15,6 +16,7 @@ const TODOS = [
 
 const app = new Koa();
 
+app.use(cors());
 app.use(errorHandler({ accepts: ["json"] }));
 app.use(bodyparser({ enableTypes: ["json"] }));
 
